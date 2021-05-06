@@ -1,0 +1,12 @@
+#mainico{
+  width:75px;
+  height:75px; 
+  border: 2px solid rgb(255, 255, 255); 
+  border-radius: 50%;
+}
+body {
+    padding-top: 3.5rem;
+  }
+nav {
+  background-color: #bdddbf;
+}
