@@ -16,10 +16,9 @@ Including another URLconf
 
 import os
 from django.contrib import admin
-from django.urls import path
-from django.urls import include
+from django.urls import path, include
 
 urlpatterns = [
     path(str(os.getenv('SECRET_ADMIN_URL'))+'admin/', admin.site.urls),
-    path('main/', include("main.urls")),
+    path('', include("main.urls")),
 ]
