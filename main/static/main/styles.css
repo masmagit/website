@@ -4,9 +4,12 @@
   border: 2px solid rgb(255, 255, 255); 
   border-radius: 50%;
 }
-#submit-contact, nav {
+.greentext {
+  color: #748d76;;
+}
+.greenbg {
   background-color: #bdddbf;
 }
 body {
-    padding-top: 3.5rem;
+    padding-top: 1.5rem;
   }

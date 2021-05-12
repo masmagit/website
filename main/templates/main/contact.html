@@ -1,28 +1,26 @@
 {% extends "main/layout.html" %}
 {% block main %}
-<div class="mt-5" style="width: 85%;">
-    {% include 'main/messages.html' %}
+<div class="row">
+<div class="mt-4 col-md-10">
     <form class="p-4 mb-3 bg-light rounded" action="{% url 'main:contact' %}" method="POST">
       {% csrf_token %}      
-      <p class="fw-bold">Contact Us</p>
-      {{ cform.as_p }}
-<!--      
-      <div class="mb-3" style="width: 360px;">
-        <label for="id_email" class="form-label">Email address</label>
-        <input name="email" type="email" class="form-control" id="id_email" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-      </div>   
+      <div class="mb-4 border-bottom">
+        <p class="greentext" style="font-size:x-large">Contact Us</p>
+        <p class="greentext">Any questions, comments, suggestions? Please email us using the form below.</p>
+      </div>
+      {% include 'main/messages.html' %}
+      {% for field in cform %}
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        {{ field.errors }}
+        {{ field.label_tag }} 
+        {{ field }}
+        {% if field.help_text %}
+        <p class="form-text">{{ field.help_text|safe }}</p>
+        {% endif %}
       </div>
-      
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
-    -->
-      <button id="submit-contact" type="submit" class="btn">Submit</button>
+      {% endfor %}
+      <button id="submit-contact" type="submit" class="btn greenbg">Submit</button>
     </form>
+</div>
 </div>
 {% endblock %}

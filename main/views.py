@@ -31,8 +31,6 @@ def contact(request):
                 return HttpResponse('Invalid header found.')
             messages.success(request, "Thank you for contacting us, your message was successfully sent!")
             return redirect(reverse("main:contact"))
-        else: 
-            messages.warning(request, "Sonething went wrong, message was not sent. Please try again.")
     else:
         cform = ContactForm()
     
