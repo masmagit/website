@@ -103,6 +103,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+# EMAIL through SES configuration
+EMAIL_BACKEND = 'django_ses.SESBackend'
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+SES_EMAIL = os.getenv("SES_EMAIL")
+AWS_SES_REGION_NAME = 'us-east-2'
+AWS_SES_REGION_ENDPOINT ='email.us-east-2.amazonaws.com' 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
