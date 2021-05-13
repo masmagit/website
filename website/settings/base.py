@@ -121,3 +121,7 @@ STATIC_ROOT = os.path.join(SITE_ROOT, "staticfiles")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Google reCaptcha keys
+RECAPTCHA_SITE_KEY=os.getenv("RECAPTCHA_SITE_KEY")
+RECAPTCHA_SECRET_KEY=os.getenv("RECAPTCHA_SECRET_KEY")
