@@ -9,5 +9,11 @@ class ContactForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
         self.label_suffix = ""
-        for field in self: 
-            field.field.widget.attrs['class'] = 'form-control'
+        self.assign_attr_valid()  
+
+    def _post_clean(self):
+        self.assign_attr_valid()
+
+    def assign_attr_valid(self):
+        for field in self:
+            field.field.widget.attrs['class'] = 'form-control' if not field.errors else 'form-control is-invalid'

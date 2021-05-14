@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
+from django.contrib.messages import constants as messages
 import os
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
@@ -102,6 +103,15 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# Align message types with Bootstrap message types
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+ }
 
 # EMAIL through SES configuration
 EMAIL_BACKEND = 'django_ses.SESBackend'

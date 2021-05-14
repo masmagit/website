@@ -3,18 +3,24 @@
 {{recaptcha_site_key|json_script:"recaptcha_site_key"}}
 <div class="row">
 <div class="mt-4 col-md-10">
-    <form class="p-4 mb-3 bg-light rounded" action="{% url 'main:contact' %}" method="POST">
+    <form id="form_contact" class="p-4 mb-3 bg-light rounded" action="{% url 'main:contact' %}" method="POST">
       {% csrf_token %}      
-      <div class="mb-4 border-bottom">
+      <div class="mb-4 border-bottom" style="text-align: center;">
         <p class="greentext" style="font-size:x-large">Contact Us</p>
         <p class="greentext">Any comments, ideas, suggestions? Please email us using the form below.</p>
       </div>
       {% include 'main/messages.html' %}
       {% for field in cform %}
       <div class="mb-3">
-        {{ field.errors }}
         {{ field.label_tag }} 
         {{ field }}
+        {% if field.errors %}
+          {% for error in field.errors %} 
+          <div class="error invalid-feedback small" name="error-{{ field.name }}">
+          {{ error }}
+          </div>      
+          {% endfor %} 
+        {% endif %}    
         {% if field.help_text %}
         <p class="form-text">{{ field.help_text|safe }}</p>
         {% endif %}

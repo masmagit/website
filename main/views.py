@@ -38,6 +38,8 @@ def contact(request):
             else:
                 messages.error(request, "reCaptcha response validation failed, please try again.")
             return redirect(reverse("main:contact"))
+        else:
+            messages.error(request, "Please check the input.")
     else:
         cform = ContactForm()
     
