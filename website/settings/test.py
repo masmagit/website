@@ -1,4 +1,8 @@
-import sys, dj_database_url, os
+import sys, os, dj_database_url, dotenv
+
+# Load environment vars here for pytest
+dotenv.load_dotenv(os.path.join(os.path.abspath(os.path.dirname(__name__)), '.env'))
+
 from website.settings.base import *
 
 # Database
