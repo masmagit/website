@@ -4,7 +4,7 @@ from website.settings.base import *
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
-if (len(sys.argv) > 0) and (sys.argv[1] != 'collectstatic'):
+if not ((len(sys.argv) > 1) and (sys.argv[1] == 'collectstatic')):
     if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
