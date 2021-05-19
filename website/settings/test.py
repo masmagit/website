@@ -8,7 +8,7 @@ from website.settings.base import *
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if (len(sys.argv) > 0) and (sys.argv[1] != 'collectstatic'):
+if not ((len(sys.argv) > 1) and (sys.argv[1] == 'collectstatic')):
     if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {

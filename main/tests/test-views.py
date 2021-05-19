@@ -8,7 +8,10 @@ def test_settings_loaded():
     assert a == "website.urls"
 
 #https://docs.djangoproject.com/en/dev/topics/testing/tools/#topics-testing-email
-def test_view_contact(client):
+def test_view_contact_get(client):
     url = reverse("main:contact")
     response = client.get(url)
     assert response.status_code == 200
+
+def test_view_contact_post(client):
+    pass
