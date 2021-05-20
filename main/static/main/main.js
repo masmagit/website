@@ -8,9 +8,11 @@ grecaptcha.ready(function() {
   });
 
 document.addEventListener('DOMContentLoaded', function() {
-  
+  const cform = document.forms.namedItem("form_contact")
+  const form_contact_inputs = cform.getElementsByTagName("input")
+  const spinner = document.getElementById("spinner");
+
   // form_contact: remove "is-invalid" class once value is changed in an input field
-  var form_contact_inputs = document.forms.namedItem("form_contact").getElementsByTagName("input")
   Array.prototype.forEach.call(form_contact_inputs, function(element) {
     element.onkeydown = function() { 
       if (element.classList.contains("is-invalid")) {
@@ -19,4 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  cform.addEventListener('submit', function() {
+    cform.classList.toggle('fade-out');
+    spinner.classList.replace('hide', 'show');
+  });
 });

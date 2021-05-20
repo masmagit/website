@@ -4,6 +4,12 @@
   border: 2px solid rgb(255, 255, 255); 
   border-radius: 50%;
 }
+#spinner {
+  position: fixed;
+  top: 50%;
+  left: 40%;
+}
+
 .greentext {
   color: #748d76;;
 }
@@ -12,4 +18,14 @@
 }
 body {
     padding-top: 1.5rem;
-  }
+}
+
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.fade-out{
+  opacity: 0.5;
+}
