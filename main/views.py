@@ -4,14 +4,16 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib import messages
 from django.utils.timezone import localtime
+from django.contrib.auth.decorators import login_required
 from os import getenv as os_getenv
 from .forms import ContactForm
 from .utils import recaptcha_validate
 
+# Home page view
 def index(request):
     return render(request, "main/index.html")
 
-# Contact form view
+# Contact page view
 def contact(request):
     if request.method == 'POST':
         cform = ContactForm(request.POST)
@@ -46,4 +48,13 @@ def contact(request):
     return render(request, "main/contact.html", {
         "cform" : cform,
         "recaptcha_site_key" : os_getenv("RECAPTCHA_SITE_KEY")
+    })
+
+# About page view
+def about(request):
+    return render(request, "main/about.html")
+
+def tiny(request):
+    return render(request, "main/tiny.html", { 
+        "tinykey": os_getenv("TINY_KEY")
     })

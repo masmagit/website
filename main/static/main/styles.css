@@ -29,3 +29,7 @@ body {
 .fade-out{
   opacity: 0.5;
 }
+
+.hightmax {
+  height: 100%;
+}
