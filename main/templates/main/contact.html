@@ -1,4 +1,7 @@
 {% extends "main/layout.html" %}
+
+{% block title %}Contact{% endblock %}
+
 {% block main %}
 {{recaptcha_site_key|json_script:"recaptcha_site_key"}}
 <div class="row">
@@ -11,8 +14,8 @@
   <form id="form_contact" class="p-4 mb-3 bg-light rounded hightmax" action="{% url 'main:contact' %}" method="POST">
       {% csrf_token %}      
       <div class="mb-4 border-bottom" style="text-align: center;">
-        <p class="greentext" style="font-size:x-large">Contact Us</p>
-        <p class="greentext">Any comments, ideas, suggestions? Please email us using the form below.</p>
+        <p style="font-size:x-large">Contact Us</p>
+        <p>Any comments, ideas, suggestions? Please email us using the form below.</p>
       </div>
       {% include 'main/messages.html' %}
       {% for field in cform %}

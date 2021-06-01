@@ -5,9 +5,11 @@ from django.urls import reverse
 from django.contrib import messages
 from django.utils.timezone import localtime
 from django.contrib.auth.decorators import login_required
+from django.views import generic
 from os import getenv as os_getenv
 from .forms import ContactForm
 from .utils import recaptcha_validate
+from .models import Content
 
 # Home page view
 def index(request):
@@ -50,11 +52,15 @@ def contact(request):
         "recaptcha_site_key" : os_getenv("RECAPTCHA_SITE_KEY")
     })
 
-# About page view
-def about(request):
-    return render(request, "main/about.html")
-
 def tiny(request):
     return render(request, "main/tiny.html", { 
         "tinykey": os_getenv("TINY_KEY")
     })
+
+# About page view
+class AboutListView(generic.ListView):
+    model = Content
+    template_name = "main/about.html"
+
+    def get_queryset(self):
+        return Content.objects.filter(page='about').all().order_by('id')     

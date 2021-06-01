@@ -10,7 +10,7 @@
     <link href="{% static 'main/styles.css' %}" rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_site_key }}"></script>
     <script src="{% static 'main/main.js' %}"></script>
-    <title></title>
+    <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
 
@@ -43,7 +43,7 @@
               </li>
             </ul>
             <form>
-              <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+              <input class="form-control hide" type="text" placeholder="Search" aria-label="Search">
             </form>
           </div>
         </div>
