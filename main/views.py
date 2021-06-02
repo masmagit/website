@@ -63,4 +63,12 @@ class AboutListView(generic.ListView):
     template_name = "main/about.html"
 
     def get_queryset(self):
-        return Content.objects.filter(page='about').all().order_by('id')     
+        return Content.objects.filter(page='about').all().order_by('id')
+
+# Home page view
+class HomeListView(generic.ListView):
+    model = Content
+    template_name = "main/index.html"
+
+    def get_queryset(self):
+        return Content.objects.filter(page='index').all().order_by('id')

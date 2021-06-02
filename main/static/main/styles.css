@@ -31,5 +31,9 @@ body {
 }
 
 .hightmax {
-  height: 100%;
+  height: 95%;
+}
+.divheader {
+  font-size: x-large; 
+  font-weight:600;
 }
